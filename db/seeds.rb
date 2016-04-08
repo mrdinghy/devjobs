@@ -19,50 +19,32 @@ User.create(email: 'stvmetzger@aol.com', password: 'cantina23')
 posts = Post.create([
   { name: '25 entrepreneurs in Africa to follow on instagram',
     description: 'A third video surfaced on Tuesday that sheds new light on the incident between',
-    start_date: DateTime.new(2015,8,1,8),
-    end_date:  DateTime.new(2016,8,1,8),
-    post_type: 3,
-    post_value: 345000.45
-  },
+    published_at: DateTime.new(2015,8,1,8)
+                        },
 
   { name: '25 development workers to follow on instagram',
     description: 'A third video surfaced on Tuesday that sheds new light on the incident between',
-    start_date: DateTime.new(2015,8,1,8),
-    end_date:  DateTime.new(2016,8,1,8),
-    post_type: 2,
-    post_value: 456000.45
+    published_at: DateTime.new(2015,8,1,8)
   },
 
   { name: 'Today’s development­speak search on google',
     description: 'A third video surfaced on Tuesday that sheds new light on the incident between',
-    start_date: DateTime.new(2015,8,1,8),
-    end_date:  DateTime.new(2016,8,1,8),
-    post_type: 1,
-    post_value: 345000.45
+    published_at: DateTime.new(2015,8,1,8)
   },
 
   { name: 'What is DFID planning for next year',
     description: 'A third video surfaced on Tuesday that sheds new light on the incident between',
-    start_date: DateTime.new(2015,8,1,8),
-    end_date:  DateTime.new(2016,8,1,8),
-    post_type: 2,
-    post_value: 3860.45
+    published_at: DateTime.new(2015,8,1,8)
   },
 
   { name: ' Innovation vs. disruption',
     description: 'A third video surfaced on Tuesday that sheds new light on the incident between',
-    start_date: DateTime.new(2015,8,1,8),
-    end_date:  DateTime.new(2016,8,1,8),
-    post_type: 3,
-    post_value: 345000.45
+    published_at: DateTime.new(2015,8,1,8)
   },
 
   { name: 'Occasional Airport Tipsheet',
     description: 'A third video surfaced on Tuesday that sheds new light on the incident between',
-    start_date: DateTime.new(2015,8,1,8),
-    end_date:  DateTime.new(2016,8,1,8),
-    post_type: 3,
-    post_value: 345000.45
+    published_at: DateTime.new(2015,8,1,8)
   }
 
 ])

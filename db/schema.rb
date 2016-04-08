@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20160406175607) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
+    t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text     "body"
   end
 
   create_table "categorizations", force: :cascade do |t|
@@ -72,36 +72,33 @@ ActiveRecord::Schema.define(version: 20160406175607) do
   create_table "notices", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.text     "qualifications"
     t.datetime "posted_on"
     t.datetime "closed_on"
     t.integer  "organization_id"
+    t.integer  "jobtype_id"
+    t.integer  "level_id"
+    t.integer  "jobstage_id"
+    t.string   "location"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "location"
-    t.integer  "level_id"
-    t.integer  "jobtype_id"
-    t.text     "qualifications"
-    t.integer  "jobstage_id"
   end
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
     t.string   "response_email"
     t.string   "response_phone"
+    t.text     "description"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.text     "description"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.integer  "post_type"
-    t.decimal  "post_value"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.date     "published_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "posts_categories", force: :cascade do |t|
@@ -144,9 +141,9 @@ ActiveRecord::Schema.define(version: 20160406175607) do
 
   create_table "technicalareas", force: :cascade do |t|
     t.string   "name"
+    t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text     "body"
   end
 
   create_table "users", force: :cascade do |t|
