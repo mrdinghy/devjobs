@@ -1,0 +1,149 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', notices_path %>
+<div class="row">
+
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <div>
+
+
+
+
+        <%= form_for(@notice, :class => "form-horizontal" ) do |f| %>
+  <% if @notice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@notice.errors.count, "error") %> prohibited this notice from being saved:</h2>
+
+      <ul>
+      <% @notice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Organization [select]" %><br>
+
+    <%= f.collection_select(:organization_id, Organization.all, :id, :name, include_blank: true, :class => "form-control") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, :cols => "75", :rows => "15" %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :qualifications %><br>
+    <%= f.text_area :qualifications, :cols => "75", :rows => "15" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :posted_on %><br>
+    <%= f.datetime_select :posted_on %>
+  </div>
+  <div class="field">
+    <%= f.label :closed_on %><br>
+    <%= f.datetime_select :closed_on %>
+  </div>
+
+
+
+    <div class="field">
+      <%= f.label "Level" %><br>
+
+      <%= f.collection_select(:level_id, Level.all, :id, :name, include_blank: true, :class => "form-control") %>
+    </div>
+    <div class="field">
+      <%= f.label "Type" %><br>
+
+      <%= f.collection_select(:jobtype_id, Jobtype.all, :id, :name, include_blank: true, :class => "form-control") %>
+    </div>
+
+      <div class="field">
+        <%= f.label "Job/Project Stage" %><br>
+
+        <%= f.collection_select(:jobstage_id, Jobstage.all, :id, :name, include_blank: true, :class => "form-control") %>
+      </div>
+
+
+
+
+
+
+
+
+              <div class="col-sm-3 chkpanel">
+                <label class="label">Technical Areas</label>
+                <div class="row">
+                  <%= hidden_field_tag "notice[technicalarea_ids][]", nil %>
+                  <% @technicalarea_list.all.each do |area| %>
+                      <%= check_box_tag "notice[technicalarea_ids][]", area.id,
+                                        @notice.technicalarea_ids.include?(area.id), id: dom_id(area) %>
+                      <%= label_tag dom_id(area), area.name %><br>
+                  <% end %>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="col-sm-3 chkpanel">
+                <label class="label">Categories</label>
+                <div class="row">
+                  <%= hidden_field_tag "notice[category_ids][]", nil %>
+                  <% @category_list.all.each do |cat| %>
+                      <%= check_box_tag "notice[category_ids][]", cat.id,
+                                        @notice.category_ids.include?(cat.id), id: dom_id(cat) %>
+                      <%= label_tag dom_id(cat), cat.name %><br>
+                  <% end %>
+
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

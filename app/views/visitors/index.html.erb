@@ -1,0 +1,110 @@
+<h1>Welcome to the DevJobs</h1>
+<%#= render 'visitors/carousel' %>
+<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<div class="row">
+
+
+
+
+
+
+
+
+
+  <div class="col-sm-4">
+    <h3>Cup of Morning Coffee </h3>
+
+
+   <p> This is a website will contain international development­related news and content and serves as a one­stop shop
+    for posting and searching for related jobs.</p>
+
+    <p>The website will emphasis donor markets with the most money. Off the top of my head:
+
+    USAID, DFID and Australia. EU Commission funds a lot of work. Why do they not appear on
+
+    Devex more? Is there another site the Europeans are using?</p>
+
+
+
+
+
+
+      <h3>Search by Technical Area</h3>
+      <ul>
+      <% @alltechnicalareas.each do |tech| %>
+         <li><%= link_to tech.name, tech %></li>
+      <% end %>
+      </ul>
+
+
+    <h3>Search by Category</h3>
+    <ul>
+      <% @allcategories.each do |cat| %>
+          <li><%= link_to cat.name, cat %></li>
+      <% end %>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="col-sm-4">
+    <h3>Latest Opportunities</h3>
+    <% @latestnotices.each do |ad| %>
+       <strong><%= link_to ad.name, ad %></strong><br>
+       <%= ad.organization.name %><br>
+        <%= ad.level.name if ad.level_id.present? %><br>
+        <%= ad.jobtype.name if ad.jobtype_id.present?  %><br>
+<hr>
+
+    <% end %>
+
+
+
+  </div>
+
+
+
+  <div class="col-sm-4">
+    <h3>In The Field...</h3>
+    <% @latestposts.each do |post| %>
+        <strong><%= link_to post.name, post %></strong><br>
+        <%= post.created_at %><br>
+
+        <hr>
+
+    <% end %>
+
+
+
+  </div>
+
+
+
+</div>

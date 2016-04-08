@@ -1,0 +1,30 @@
+<%= form_for(@technicalarea) do |f| %>
+  <% if @technicalarea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@technicalarea.errors.count, "error") %> prohibited this technicalarea from being saved:</h2>
+
+      <ul>
+      <% @technicalarea.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+
+    <div class="field">
+      <%= f.label :body %><br>
+      <%= f.text_area :body, :cols => "75", :rows => "15" %>
+
+    </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

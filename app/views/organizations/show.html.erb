@@ -1,0 +1,88 @@
+
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', organizations_path %>
+<div class="row">
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <div class="form-horizontal">
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Name: </label>
+            <div class="col-sm-10">
+              <%= @organization.name %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Description: </label>
+            <div class="col-sm-10">
+              <%= @organization.description %>
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Respond To Email: </label>
+            <div class="col-sm-10">
+              <%= @organization.response_email %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Respond to Phone: </label>
+            <div class="col-sm-10">
+              <%= @organization.response_phone %>
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+              <%= link_to 'Edit', edit_organization_path(@organization), :class => "btn btn-primary" %>
+            </div>
+          </div>
+
+
+
+
+
+
+</div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <h3>Related Notices</h3>
+
+            <% @orgnotices.each do |ad| %>
+               <%= link_to ad.name, ad %><br>
+              Posted: <%= ad.posted_on %><br>
+              Closing Date: <%= ad.closed_on %>
+<hr>
+
+          <% end %>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

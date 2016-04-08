@@ -1,0 +1,79 @@
+
+
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', categories_path %>
+<div class="row">
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+
+
+
+        <h3><%= @category.name %></h3>
+
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Description: </label>
+          <div class="col-sm-10">
+            <%= @category.body %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label"></label>
+          <div class="col-sm-10">
+            <%= link_to 'Edit', edit_category_path(@category), :class => "btn btn-primary" %>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <h3>Related Notices</h3>
+
+        <% @mynotices.each do |ad| %>
+            <%= link_to ad.notice.name, ad.category %><br>
+            Posted: <%= ad.notice.posted_on %><br>
+            Closing Date: <%= ad.notice.closed_on %>
+            <hr>
+
+        <% end %>
+
+
+
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <h3>Related News Posts</h3>
+
+            <% @myposts.each do |p| %>
+                <%= link_to p.post.name, p.post %><br>
+                Created: <%= p.post.created_at %><br>
+
+                <hr>
+
+            <% end %>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

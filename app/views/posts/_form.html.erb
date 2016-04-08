@@ -1,0 +1,19 @@
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">Horizontal form</div>
+  <div class="panel-body">
+
+    <%= form_for @post do |form| -%>
+        ...
+        <%= form.cktext_area :body, :class => 'someclass', :ckeditor => {:language => 'uk'} %>
+        ...
+        <%= form.cktext_area :body, :value => 'Default value', :id => 'sometext' %>
+        ...
+        <%= cktext_area :post, :info, :cols => 40, :ckeditor => {:uiColor => '#AADC6E', :toolbar => 'mini'} %>
+        ...
+    <% end -%>
+    </div>
+  </div>
+

@@ -1,0 +1,109 @@
+
+
+<div class="container content">
+  <div class="row">
+    <div class="col-md-9">
+      <!-- Our Services -->
+      <div class="headline"><h2>Search Results</h2>
+
+
+
+      </div>
+
+
+
+      <%= form_tag notices_path, :method => :get do %>
+          <p>
+            <%= text_field_tag :search_term, params[:search_term] %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>
+      <% end %>
+
+
+
+
+
+
+
+
+      Search term <span style="color: orangered;"><%= @searchterm %></span><br>
+      <% @notices.each do |result| %>
+
+
+
+          <strong><%= link_to result do %><%= result.name %><% end %></strong><br>
+          <% if !result.organization_id.nil? %>
+              <small class="color: orange">Organization: <%= result.organization.name %></small><br>
+          <% end %>
+
+          <br>
+          <%= result.description %>
+          <br>
+          <em>Technical:</em> <% result.technicalareas.each do |ta| %> |
+              <%= link_to ta.name, ta %>
+          <% end %><br>
+          <em>Categories:</em>  <% result.categories.each do |cat| %> |
+              <%= link_to cat.name, cat %>
+          <% end %><br>
+          <em>Type:</em>  <%= result.jobtype.name if result.jobtype_id.present? %><br>
+          <em>Level:</em>  <%= result.level.name if result.level_id.present?  %><br>
+          <em>Stage:</em>  <%= result.jobstage.name if result.jobstage_id.present?  %><br>
+          <br><br>
+      <% end %>
+
+      <br>
+
+
+    </div>
+
+
+    <div class="col-md-3">
+
+
+      <div id="facets" class="facetbox pull-right">
+
+
+        <h3>Search Results Drilldown</h3>
+
+        <strong>Publish Date</strong>
+
+        <strong>Technical Areas</strong>
+        <ul>
+          <% for row in @search.facet(:technicalarea_ids).rows %>
+              <li>
+                <%= link_to(row.instance.name, url_for(:technicalarea_id => row.value)) %> (<%= row.count %>)
+
+              </li>
+          <% end %>
+        </ul>
+        <strong>Categories</strong>
+        <ul>
+          <% for row in @search.facet(:category_ids).rows %>
+              <li>
+                <%= link_to(row.instance.name, url_for(:category_id => row.value)) %> (<%= row.count %>)
+
+              </li>
+          <% end %>
+        </ul>
+        <strong>Organizations</strong>
+        <ul>
+          <% for row in @search.facet(:organization_id).rows %>
+              <li>
+                <%= link_to(row.instance.name, url_for(:organization_id => row.value)) %> (<%= row.count %>)
+
+              </li>
+          <% end %>
+        </ul>
+
+      </div>
+
+
+
+
+
+    </div>
+
+
+
+  </div>
+</div>

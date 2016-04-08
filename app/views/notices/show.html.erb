@@ -1,0 +1,119 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', notices_path %>
+<div class="row">
+
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <div class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Name: </label>
+            <div class="col-sm-10">
+                 <%= @notice.name %>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Organization:</label>
+          <div class="col-sm-10">
+            <%= link_to @notice.organization do %><%= @notice.organization.name if @notice.organization_id.present? %><% end %>
+          </div>
+        </div>
+
+
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Categories: </label>
+            <div class="col-sm-10">
+              <% @notice.categories.each do |cat| %>
+                  <%= link_to cat.name, cat %> &nbsp;|&nbsp;
+            <% end %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Area of Expertise: </label>
+            <div class="col-sm-10">
+              <% @notice.technicalareas.each do |area| %>
+                  <%= link_to area.name, area %>&nbsp;|&nbsp;
+                  <% end %>
+            </div>
+          </div>
+
+
+
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Description: </label>
+          <div class="col-sm-10">
+            <%= @notice.description.html_safe if !@notice.description.nil? %>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Qualications/Requirements:</label>
+          <div class="col-sm-10">
+            <%= @notice.qualifications.html_safe if !@notice.qualifications.nil? %>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Posted on: </label>
+          <div class="col-sm-10">
+            <%= @notice.posted_on %>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Closing Date: </label>
+          <div class="col-sm-10">
+            <%= @notice.closed_on %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Level: </label>
+          <div class="col-sm-10">
+            <%= @notice.level.name if @notice.level_id.present? %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Job Type: </label>
+          <div class="col-sm-10">
+            <%= @notice.jobtype.name if @notice.jobtype_id.present? %>
+          </div>
+        </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Job/Project Stage: </label>
+            <div class="col-sm-10">
+              <%= @notice.jobstage.name if @notice.jobstage_id.present? %>
+            </div>
+          </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label"></label>
+          <div class="col-sm-10">
+               <%= link_to 'Edit', edit_notice_path(@notice), :class => "btn btn-primary" %>
+          </div>
+        </div>
+
+
+
+
+
+
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
