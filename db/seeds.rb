@@ -10,6 +10,10 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 
 
+User.create(email: 'mmiller@konterragroup.net', password: 'miLLer9876')
+User.create(email: 'stvmetzger@aol.com', password: 'cantina23')
+
+
 
 
 posts = Post.create([
