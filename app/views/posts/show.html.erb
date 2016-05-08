@@ -1,16 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-
+<%= link_to 'Back', posts_path %>
 
 
 <div class="container">
   <p id="notice"><%= notice %></p>
   <!-- Page Heading/Breadcrumbs -->
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header"><%= @post.name %>
-        <small></small>
-      </h1>
+  <div class="row" style="background-color: #ccc;">
+    <div class="col-sm-12">
+
+
+      <ul class="nav nav-pills">
+        <li> <%= link_to 'Edit', edit_post_path(@post), :class => "mb-sm btn btn-primary" %></li>
+
+        <li><%= simple_form_for @new_site_document do |form| %>
+            <%= form.hidden_field :documentable_id, :value => @post.id %>
+            <%= form.hidden_field :documentable_type, :value => 'post' %>
+            <%= form.input :document, as: :file, :label => false %>
+            <%= form.button :submit, :value => 'Upload Document', :class => "mb-sm btn btn-primary" %>
+        <% end %>
+        </li>
+        <li>
+        <%= simple_form_for @new_site_image do |form| %>
+            <%= form.hidden_field :imageable_id, :value => @post.id %>
+            <%= form.hidden_field :imageable_type, :value => 'post' %>
+            <%= form.input :image, as: :file, :label => false  %>
+            <%= form.button :submit, :value => 'Upload Image', :class => "mb-sm btn btn-primary" %>
+        <% end %>             ...
+      </ul>
+      </li>
+
+
+
+
     </div>
   </div>
   <!-- /.row -->
@@ -18,40 +40,59 @@
   <!-- Content Row -->
   <div class="row">
 
+
+
+    <!-- Blog Sidebar Widgets Column -->
+    <div class="col-md-4">
+
+
+
+
+
+      <div class="imagepanel">
+        <% @postimages.each do |img| %>
+            <%= image_tag(img.image.url(:original, false), :class => "img-responsive") %>
+        <% end %>
+
+      </div>
+
+
+
+      <!-- Blog Search Well -->
+      <div class="well">
+
+      </div>
+
+      <!-- Blog Categories Well -->
+
+
+    </div>
+
+
+
+
+
     <!-- Blog Post Content Column -->
     <div class="col-lg-8">
-      Teaser:
-      <p>
-        <strong>Name:</strong>
-        <%= @post.name %>
-      </p>
+
+
+
+      <h1 class="page-header"><%= @post.name %></h1>
+      <small> <strong>Created:</strong>
+        <%= @post.created_at %></small>
 
       <p>
-        <strong>Description (text):</strong>
+
         <%= @post.description %>
       </p>
       <p>
-        <strong>Type (enumerated):</strong>
-        <%= @post.post_type_humanize %>
-      </p>
-      <p>
-        <strong>Post Value:</strong>
-        <%= @post.post_value %>
-      </p>
 
-      <p>
-        <strong>Start:</strong>
-        <%= @post.start_date %>
-      </p>
-
-      <p>
-        <strong>End:</strong>
-        <%= @post.end_date %>
       </p>
 
 
-      <%= link_to 'Edit', edit_post_path(@post) %> |
-      <%= link_to 'Back', posts_path %>
+
+
+
 
 
       <hr>
@@ -71,12 +112,7 @@
                 <%= link_to doc.document_file_name , doc.document.url(:original, false) %>
                 <%= doc.document_updated_at %><br>
             <% end %>
-            <%= simple_form_for @new_site_document do |form| %>
-                <%= form.hidden_field :documentable_id, :value => @post.id %>
-                <%= form.hidden_field :documentable_type, :value => 'post' %>
-                <%= form.input :document, as: :file %>
-                <%= form.button :submit, :value => 'Upload Document', :class => "mb-sm btn btn-primary" %>
-            <% end %>
+
           </div>
         </div>
       </div>
@@ -92,12 +128,7 @@
                 <%= link_to img.image_file_name , img.image.url(:original, false) %>
                 <%= img.image_updated_at %><br>
             <% end %>
-            <%= simple_form_for @new_site_image do |form| %>
-                <%= form.hidden_field :imageable_id, :value => @post.id %>
-                <%= form.hidden_field :imageable_type, :value => 'post' %>
-                <%= form.input :image, as: :file %>
-                <%= form.button :submit, :value => 'Upload Image', :class => "mb-sm btn btn-primary" %>
-            <% end %>
+
           </div>
         </div>
       </div>
@@ -145,32 +176,6 @@
 
 
 
-
-
-    </div>
-
-    <!-- Blog Sidebar Widgets Column -->
-    <div class="col-md-4">
-
-
-
-
-
-      <div class="imagepanel">
-        <% @postimages.each do |img| %>
-            <%= image_tag(img.image.url(:original, false), :class => "img-responsive") %>
-        <% end %>
-
-      </div>
-
-
-
-      <!-- Blog Search Well -->
-      <div class="well">
-
-      </div>
-
-      <!-- Blog Categories Well -->
 
 
     </div>

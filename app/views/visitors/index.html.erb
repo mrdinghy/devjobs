@@ -1,6 +1,32 @@
-<h1>Welcome to the DevJobs</h1>
+<h2>Welcome to DevJobs</h2>
 <%#= render 'visitors/carousel' %>
-<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+
+
+
+<div class="row">
+
+  <table width="100%">
+    <tr>
+      <td>
+        <%= image_tag('11118t.jpg', height: 300) %>
+
+      </td>
+      <td style="text-align: left; font-size: 22px">
+        <span style="font-size: 12px;">Image of the Day</span><br>
+        <span style="font-weight: bold; color: #999;">Peru, 2015</span><br>
+        Beltway of barrios outside Lima<br>
+        <button class = 'btn btn-primary btn-sm'>read more...</button>
+      </td>
+
+
+
+    </tr>
+
+  </table>
+
+
+</div>
+
 <div class="row">
 
 
@@ -11,7 +37,7 @@
 
 
 
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <h3>Cup of Morning Coffee </h3>
 
 
@@ -71,26 +97,6 @@
 
 
 
-
-
-
-  <div class="col-sm-4">
-    <h3>Latest Opportunities</h3>
-    <% @latestnotices.each do |ad| %>
-       <strong><%= link_to ad.name, ad %></strong><br>
-       <%= ad.organization.name %><br>
-        <%= ad.level.name if ad.level_id.present? %><br>
-        <%= ad.jobtype.name if ad.jobtype_id.present?  %><br>
-<hr>
-
-    <% end %>
-
-
-
-  </div>
-
-
-
   <div class="col-sm-4">
     <h3>In The Field...</h3>
     <% @latestposts.each do |post| %>
@@ -104,6 +110,30 @@
 
 
   </div>
+
+
+
+
+
+
+  <div class="col-sm-5">
+    <h3>Latest Opportunities</h3>
+
+
+
+    <% @latestnotices.each do |ad| %>
+
+
+            <strong><%= link_to ad.name, ad %></strong><br>
+            <%= ad.organization.name %><br>
+            <%= ad.level.name if ad.level_id.present? %><br>
+            <%= ad.jobtype.name if ad.jobtype_id.present?  %><br>
+
+
+    <% end %>
+
+  </div>
+
 
 
 
